@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
-class SocialMediaIcon extends StatelessWidget {
+class ContactChanelCard extends StatelessWidget {
      // ignore: non_constant_identifier_names
      String Platfrom;
-  Uri url;
-  SocialMediaIcon({
+   Uri url;
+  ContactChanelCard({
     Key? key,
     // ignore: non_constant_identifier_names
     required this.Platfrom,
@@ -24,7 +24,18 @@ class SocialMediaIcon extends StatelessWidget {
                       radius: 50,
                     ),
                     onTap: () {
-                      launchUrl(url, mode: LaunchMode.externalApplication);
+                      showModalBottomSheet(
+                        context: context, 
+                        builder: (context){
+                          return ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStatePropertyAll(Colors.orange),
+                            ),
+                            onPressed: (){
+                              launchUrl(url, mode: LaunchMode.externalApplication);
+                            }, child: Text('start'));
+                        });
+                       launchUrl(url, mode: LaunchMode.externalApplication);
                     },
       ),
     );
